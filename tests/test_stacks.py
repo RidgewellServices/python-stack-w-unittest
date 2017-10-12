@@ -12,5 +12,28 @@ class StackTestCase(unittest.TestCase):
         test_obj.push('data')
         self.assertEqual(False, test_obj.is_empty())
 
+    def test_pop_handles_empty_stack(self):
+        test_obj = Stack()
+        self.assertEqual(None, test_obj.pop())
+        self.assertEqual(True, test_obj.is_empty())
+
+    def test_pop_pops_1_item_stack(self):
+        test_obj = Stack()
+        test_data = 'data1'
+        test_obj.push(test_data)
+        self.assertEqual(test_data, test_obj.pop())
+        self.assertEqual(True, test_obj.is_empty())
+
+    def test_pop_in_correct_order_from_2_item_stack(self):
+        test_obj = Stack()
+        test_data1 = 'data1'
+        test_data2 = 'data2'
+        test_obj.push(test_data1)
+        test_obj.push(test_data2)
+        self.assertEqual(test_data2, test_obj.pop())
+        self.assertEqual(False, test_obj.is_empty())
+        self.assertEqual(test_data1, test_obj.pop())
+        self.assertEqual(True, test_obj.is_empty())
+
 if __name__ == '__main__':
     unittest.main()
