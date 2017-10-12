@@ -22,5 +22,7 @@ class Stack(object):
         if self.is_empty():
             return None
 
-        data = self.stack[-1]
-        return data
+        return self.stack[-1]
+
+    def size(self):
+        return len(self.stack)
