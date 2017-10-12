@@ -35,5 +35,27 @@ class StackTestCase(unittest.TestCase):
         self.assertEqual(test_data1, test_obj.pop())
         self.assertEqual(True, test_obj.is_empty())
 
+    def test_peek_handles_empty_stack(self):
+        test_obj = Stack()
+        self.assertEqual(None, test_obj.peek())
+        self.assertEqual(True, test_obj.is_empty())
+
+    def test_peek_shows_item_in_1_item_stack(self):
+        test_obj = Stack()
+        test_data = 'data1'
+        test_obj.push(test_data)
+        self.assertEqual(test_data, test_obj.peek())
+        self.assertEqual(False, test_obj.is_empty())
+
+    def test_peek_shows_top_of_2_item_stack(self):
+        test_obj = Stack()
+        test_data1 = 'data1'
+        test_data2 = 'data2'
+        test_obj.push(test_data1)
+        test_obj.push(test_data2)
+        self.assertEqual(test_data2, test_obj.peek())
+        self.assertEqual(False, test_obj.is_empty())
+        self.assertEqual(test_data2, test_obj.peek())
+
 if __name__ == '__main__':
     unittest.main()

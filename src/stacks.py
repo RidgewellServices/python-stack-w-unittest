@@ -17,3 +17,10 @@ class Stack(object):
         data = self.stack[-1]
         del self.stack[-1]
         return data
+
+    def peek(self):
+        if self.is_empty():
+            return None
+
+        data = self.stack[-1]
+        return data
